@@ -1,0 +1,33 @@
+.label {
+  text-transform: uppercase;
+  font-size: $fs-12;
+  font-weight: 700;
+  color: $c-p-orange-main;
+  letter-spacing: 0.1rem;
+}
+
+.title {
+  line-height: 1.2;
+  font-size: $fs-28;
+  font-weight: bold;
+  color: $c-g-400;
+}
+
+.description {
+  color: $c-g-300;
+}
+
+.price {
+  font-size: $fs-16;
+  font-weight: bold;
+
+  &__current {
+    color: $c-g-400;
+    font-size: $fs-28;
+  }
+
+  &__original {
+    color: $c-g-200;
+    text-decoration: line-through;
+  }
+}
