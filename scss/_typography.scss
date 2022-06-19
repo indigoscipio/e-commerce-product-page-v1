@@ -4,6 +4,10 @@
   font-weight: 700;
   color: $c-p-orange-main;
   letter-spacing: 0.1rem;
+
+  @include lg {
+    font-size: $fs-14;
+  }
 }
 
 .title {
@@ -11,6 +15,10 @@
   font-size: $fs-28;
   font-weight: bold;
   color: $c-g-400;
+
+  @include lg {
+    font-size: $fs-48;
+  }
 }
 
 .description {

@@ -27,6 +27,7 @@
           <img src="images/logo.svg" alt="" />
         </div>
         <ul class="header__menu">
+          <li><a href="#">Collections</a></li>
           <li><a href="#">Men</a></li>
           <li><a href="#">Women</a></li>
           <li><a href="#">About</a></li>
@@ -37,21 +38,19 @@
           <img src="images/icon-cart.svg" alt="" />
         </div>
         <div class="header__cart-dropdown">
-          <p><b>Cart</b></p>
-          <div class="content">
-            <div class="content__details">
-              <div class="thumbnail">
-                <img src="images/image-product-1-thumbnail.jpg" alt="" />
-              </div>
-              <p>Autumn Limited Edition</p>
-              <p>$125.00 x 3 <span>$375.00 </span></p>
-              <div class="delete">
-                <img src="images/icon-delete.svg" alt="" />
-              </div>
+          <p class="dropdown__title"><b>Cart</b></p>
+          <div class="dropdown__empty">Your cart is Empty</div>
+          <div class="dropdown__product">
+            <!-- <div class="product-thumbnail">
+              <img src="images/image-product-1-thumbnail.jpg" alt="" />
             </div>
-            <button class="content__button">Checkout</button>
+            <p class="product-title">Autumn Limited Edition...</p>
+            <p class="product-price">$125.00 x 3 <b>$375.00 </b></p>
+            <div class="delete">
+              <img src="images/icon-delete.svg" alt="" />
+            </div> -->
           </div>
-          <!-- <div class="content">Your cart is empty</div> -->
+          <button class="button" id="btn-checkout">Checkout</button>
         </div>
         <div class="header__profile">
           <img src="images/image-avatar.png" alt="" />
@@ -86,16 +85,16 @@
           the weather can offer.
         </p>
         <div class="price">
-          <div class="price__current">$125</div>
+          <div class="price__current">$125.00</div>
           <div class="price__discount">50%</div>
-          <div class="price__original">$250</div>
+          <div class="price__original">$250.00</div>
         </div>
         <div class="counter">
           <input
             id="quantity"
             type="number"
-            value="0"
-            placeholder="0"
+            value="1"
+            placeholder="1"
             disabled
           />
           <button class="minus">
@@ -110,15 +109,7 @@
         </button>
       </div>
     </section>
-    <!-- Collections
 
-  $125.00
-  50%
-  $250.00
-
-  0
-  Add to cart
-   -->
     <script src="script.js"></script>
   </body>
 </html>

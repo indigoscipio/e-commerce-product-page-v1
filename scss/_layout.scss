@@ -6,6 +6,8 @@
 .container {
   padding-left: 2.4rem;
   padding-right: 2.4rem;
+  max-width: 110rem;
+  margin: 0 auto;
 }
 
 //Header
@@ -24,28 +26,110 @@
     background-color: white;
     box-shadow: 0 8px 16px rgba(44, 44, 55, 0.193);
     width: calc(100% - 4.8rem);
-    // opacity: 0;
-    // visibility: hidden;
-    // transition: all 0.3s ease;
-    // transform: translateY(-1.6rem);
-    // &.active {
-    //   transform: translateY(0);
-    //   opacity: 1;
-    //   visibility: visible;
-    // }
+    columns: $c-g-300;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(-1.6rem);
 
-    p {
+    @include lg {
+      display: none;
+    }
+
+    &.active {
+      transform: translateY(0);
+      z-index: 4;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dropdown__title {
       padding: 2.4rem;
       border-bottom: 1px solid $c-g-200;
     }
-
-    .content {
+    .dropdown__product {
+      display: grid;
+      column-gap: 0.8rem;
+      grid-template-columns: min-content 1fr max-content;
+      grid-template-rows: repeat(2, min-content);
       padding: 2.4rem;
+    }
+
+    .dropdown__empty {
+      padding: 4.8rem 2.4rem;
+      text-align: center;
+      font-weight: 700;
+      color: $c-g-200;
+    }
+
+    .product-thumbnail {
+      width: 5rem;
+      grid-column: 1/2;
+      grid-row: 1/-1;
+
+      img {
+        border-radius: 0.4rem;
+      }
+    }
+
+    .product-title {
+      grid-row: 1/2;
+      grid-column: 2/3;
+    }
+
+    .product-price {
+      grid-column: 2/3;
+      grid-row: 2/3;
+      align-self: end;
+    }
+
+    .delete {
+      grid-row: 1/-1;
+      grid-column: 3/ -1;
+      cursor: pointer;
+      align-self: center;
+      justify-self: center;
+    }
+
+    .button {
+      cursor: pointer;
+      margin: 0 2.4rem 2.4rem;
+      box-shadow: $bs-orange;
+      color: white;
+      border: 0;
+      border-radius: 0.8rem;
+      width: calc(100% - 4.8rem);
+      padding: 1.6rem 0;
+      font-weight: 700;
+      background-color: $c-p-orange-main;
+      display: none;
     }
   }
 
   &__hamburger {
     cursor: pointer;
+    z-index: 11;
+
+    @include lg {
+      display: none;
+    }
+
+    span {
+      transition: all 0.2s ease;
+      transform-origin: 5% 45%;
+    }
+
+    &.active {
+      .line-1 {
+        transform: rotate(45deg);
+      }
+      .line-2 {
+        transform: scale(0);
+      }
+      .line-3 {
+        transform: rotate(-45deg);
+      }
+    }
 
     span {
       width: 16px;
@@ -62,10 +146,35 @@
   &__logo {
     margin-left: 1.6rem;
     cursor: pointer;
+
+    @include lg {
+      margin: 0;
+    }
   }
 
   &__menu {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 120%;
+    width: 70%;
+    background-color: white;
+    z-index: 10;
+    padding: 9.6rem 2.4rem;
+    font-weight: 700;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+    visibility: hidden;
+
+    li {
+      line-height: 2.6;
+    }
+
+    &.active {
+      visibility: visible;
+      transform: translateX(0);
+      box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.729);
+    }
   }
 
   &__cart {
@@ -83,6 +192,7 @@
       color: white;
       top: -8px;
       right: -8px;
+      display: none;
     }
   }
 
@@ -95,9 +205,21 @@
 
 //Product
 .product {
+  @include lg {
+    gap: 12.8rem;
+    display: flex;
+    max-width: 110rem;
+    margin: 0 auto;
+    padding: 9.4rem 0;
+  }
+
   &__carousel {
     position: relative;
     overflow-x: hidden;
+
+    @include lg {
+      flex: 1;
+    }
 
     .controls {
       top: 50%;
@@ -107,6 +229,11 @@
       justify-content: space-between;
       position: absolute;
       width: calc(100% - 4.8rem);
+      z-index: 3;
+
+      @include lg {
+        display: none;
+      }
     }
 
     .arrow {
@@ -133,6 +260,14 @@
     }
     .image-container {
       display: flex;
+      transform: translateX(0%);
+      transition: all 0.5s ease;
+
+      & > * {
+        @include lg {
+          border-radius: 1.6rem;
+        }
+      }
     }
   }
 
@@ -140,6 +275,12 @@
     padding: 2.4rem;
     flex-direction: column;
     gap: 2.4rem;
+
+    @include lg {
+      flex: 1;
+      justify-content: center;
+      align-items: flex-start;
+    }
   }
 
   .price {
@@ -203,6 +344,7 @@
     font-weight: 700;
     color: white;
     gap: 1.6rem;
+    box-shadow: $bs-orange;
     justify-content: center;
   }
 }

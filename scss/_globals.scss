@@ -46,6 +46,11 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-family: "Kumbh Sans", sans-serif;
+  overflow-x: hidden;
+
+  &.locked {
+    overflow: hidden;
+  }
 }
 
 a:not([class]) {
