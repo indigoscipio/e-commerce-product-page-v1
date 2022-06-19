@@ -15,6 +15,11 @@ let priceOriginalEl = document.querySelector(".price__original");
 let priceCurrEl = document.querySelector(".price__current");
 let images = document.querySelectorAll(".image-container img");
 
+//Desktop thumbnails
+// let thumbnailContainer = document.querySelector(".thumbnail-container");
+let thumbnailRadioInput = document.querySelectorAll(".input-radio");
+let thumbnails = document.querySelectorAll(".thumbnail");
+
 //DOM Elements - Slider
 let btnSliderPrev = document.querySelector(".arrow.left");
 let btnSliderNext = document.querySelector(".arrow.right");
@@ -34,6 +39,13 @@ hamburgerMenu.addEventListener("click", toggleMenu);
 btnSliderNext.addEventListener("click", slideNext);
 btnSliderPrev.addEventListener("click", slidePrev);
 
+//Functions
+thumbnails.forEach((thumbnail) => {
+  thumbnail.addEventListener("click", () => {
+    console.log(thumbnail.previousElementSibling.dataset.index);
+  });
+});
+
 function slideNext() {
   slideIdx++;
 
@@ -52,7 +64,6 @@ function slidePrev() {
   imageContainer.style.transform = `translateX(${-100 * slideIdx}%)`;
 }
 
-//Functions
 function toggleMenu() {
   hamburgerMenu.classList.toggle("active");
   menuContent.classList.toggle("active");

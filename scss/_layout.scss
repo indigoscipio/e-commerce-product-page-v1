@@ -13,9 +13,15 @@
 //Header
 .header {
   .container {
-    align-items: center;
     padding-top: 2.4rem;
     padding-bottom: 2.4rem;
+    align-items: center;
+    position: relative;
+
+    @include lg {
+      padding: 2.4rem 0;
+      border-bottom: 1px solid $c-g-200;
+    }
   }
 
   &__cart-dropdown {
@@ -33,7 +39,8 @@
     transform: translateY(-1.6rem);
 
     @include lg {
-      display: none;
+      width: 40rem;
+      right: 0rem;
     }
 
     &.active {
@@ -166,8 +173,44 @@
     transition: all 0.3s ease;
     visibility: hidden;
 
+    @include lg {
+      margin-left: 6.4rem;
+      position: relative;
+      width: auto;
+      height: auto;
+      gap: 4rem;
+      transform: none;
+      background-color: transparent;
+      visibility: visible;
+      padding: 0;
+      font-weight: 500;
+      display: flex;
+    }
+
     li {
       line-height: 2.6;
+      position: relative;
+
+      @include lg {
+        &:hover::after {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        &::after {
+          transition: all 0.2s ease;
+          content: "";
+          position: absolute;
+          bottom: -24px;
+          opacity: 0;
+          left: 0;
+          width: 100%;
+          transform: translateX(-16px);
+          height: 4px;
+          display: block;
+          background-color: $c-p-orange-main;
+        }
+      }
     }
 
     &.active {
@@ -269,6 +312,37 @@
         }
       }
     }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + .thumbnail {
+      border: 2px solid $c-p-orange-main;
+      img {
+        filter: opacity(0.5);
+      }
+    }
+
+    .thumbnail-container {
+      display: none;
+
+      @include lg {
+        margin-top: 2.4rem;
+        display: flex;
+        gap: 2.4rem;
+      }
+    }
+
+    .thumbnail {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      cursor: pointer;
+
+      &:hover {
+        filter: opacity(0.5);
+      }
+    }
   }
 
   &__details {
@@ -288,6 +362,10 @@
     align-items: center;
     justify-content: space-between;
 
+    @include lg {
+      width: 100%;
+    }
+
     &__discount {
       padding: 0.4rem 0.8rem;
       border-radius: 0.8rem;
@@ -300,6 +378,10 @@
 
   .counter {
     position: relative;
+
+    @include lg {
+      width: 100%;
+    }
 
     input[type="number"] {
       border: 0;
@@ -346,5 +428,9 @@
     gap: 1.6rem;
     box-shadow: $bs-orange;
     justify-content: center;
+
+    @include lg {
+      width: 100%;
+    }
   }
 }
