@@ -42,9 +42,30 @@ btnSliderPrev.addEventListener("click", slidePrev);
 //Functions
 thumbnails.forEach((thumbnail) => {
   thumbnail.addEventListener("click", () => {
-    console.log(thumbnail.previousElementSibling.dataset.index);
+    updateMainImage(thumbnail);
   });
 });
+
+function updateMainImage(thumbnail) {
+  let index = thumbnail.previousElementSibling.dataset.index;
+  console.log(index);
+
+  slideIdx = +index;
+  console.log(slideIdx);
+  if (slideIdx === 0) {
+    imageContainer.style.transform = `translateX(0)`;
+  }
+  if (slideIdx === 1) {
+    imageContainer.style.transform = `translateX(-100%)`;
+  }
+  if (slideIdx === 2) {
+    imageContainer.style.transform = `translateX(-200%)`;
+  }
+  if (slideIdx === 3) {
+    imageContainer.style.transform = `translateX(-300%)`;
+  }
+  // console.log(thumbnail.previousElementSibling.dataset.index);
+}
 
 function slideNext() {
   slideIdx++;
